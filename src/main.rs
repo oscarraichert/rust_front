@@ -1,22 +1,21 @@
 mod components;
+mod core;
+mod models;
+mod screens;
+mod services;
 
-use axum::{
-    Router,
-    routing::{get, post},
-};
-use components::{hello_form::hello_form, index::home};
-use serde::Deserialize;
-
-#[derive(Deserialize)]
-struct NameFieldValue {
-    name: String,
-}
+use axum::{Router, routing::get};
+use core::app_state::AppState;
+use dotenvy::dotenv;
+use screens::index::index;
 
 #[tokio::main]
 async fn main() {
+    dotenv().ok();
+
     let app = Router::new()
-        .route("/", get(home))
-        .route("/name", post(hello_form));
+        .route("/", get(index))
+        .with_state(AppState::new());
 
     let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
     axum::serve(listener, app).await.unwrap();
