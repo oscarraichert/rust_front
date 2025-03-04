@@ -1,13 +1,12 @@
 mod components;
 mod core;
 mod models;
-mod screens;
 mod services;
 
 use axum::{Router, routing::get};
+use components::index::index;
 use core::app_state::AppState;
 use dotenvy::dotenv;
-use screens::index::index;
 
 #[tokio::main]
 async fn main() {
