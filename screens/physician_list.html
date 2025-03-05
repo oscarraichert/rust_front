@@ -1,19 +1,30 @@
-<title>Physicians</title>
+<!DOCTYPE html>
+<html lang="en">
 
-<div>
-    <ul>
-        {% for physician in physicians %}
-        <li>
-            <div>
-                Id: {{ physician.id }}
-            </div>
-            <div>
-                Name: {{ physician.name }}
-            </div>
-            <div>
-                Specialization: {{ physician.specialization }}
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physicians</title>
+</head>
+
+<body>
+    <div>
+        <ul>
+            {% for physician in physicians %}
+            <li>
+                <div>
+                    Id: {{ physician.id }}
+                </div>
+                <div>
+                    Name: {{ physician.name }}
+                </div>
+                <div>
+                    Specialization: {{ physician.specialization }}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>
