@@ -1,7 +1,7 @@
 use askama_axum::{IntoResponse, Response};
 use axum::response::Redirect;
 
-pub async fn index() -> Response {
+pub async fn index_handler() -> Response {
     let auth = true;
 
     if auth {

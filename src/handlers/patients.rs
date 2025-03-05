@@ -4,13 +4,13 @@ use axum::extract::State;
 use crate::{core::app_state::AppState, models::patient::Patient};
 
 #[derive(Template)]
-#[template(path = "patient_list.html")]
-pub struct PatientListScreen {
+#[template(path = "patients.html")]
+pub struct PatientsScreen {
     pub patients: Vec<Patient>,
 }
 
-pub async fn patient_list(State(state): State<AppState>) -> PatientListScreen {
+pub async fn patients_screen_handler(State(state): State<AppState>) -> PatientsScreen {
     let patients = state.patients_service.get_patients().await.unwrap();
 
-    PatientListScreen { patients: patients }
+    PatientsScreen { patients: patients }
 }
