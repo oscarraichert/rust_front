@@ -1,0 +1,19 @@
+<title>Physicians</title>
+
+<div>
+    <ul>
+        {% for physician in physicians %}
+        <li>
+            <div>
+                Id: {{ physician.id }}
+            </div>
+            <div>
+                Name: {{ physician.name }}
+            </div>
+            <div>
+                Specialization: {{ physician.specialization }}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>

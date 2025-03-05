@@ -4,12 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title hx-replace-url="/home">Home</title>
 
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
 </head>
 
 <body>
-    {{body|safe}}
+    <div>
+        <nav>
+            <a href="/patient_list">Patients</a>
+            <a href="/physician_list">Physicians</a>
+        </nav>
+    </div>
 </body>
 
 </html>

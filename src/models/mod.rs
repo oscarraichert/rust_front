@@ -1,1 +1,2 @@
-pub mod patient_model;
+pub mod patient;
+pub mod physician;
