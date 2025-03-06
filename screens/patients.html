@@ -1,33 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patients</title>
-</head>
-
-<body>
-    <div>
-        <ul>
-            {% for patient in patients %}
-            <li>
-                <div>
-                    Id: {{ patient.id }}
-                </div>
-                <div>
-                    Name: {{ patient.name }}
-                </div>
-                <div>
-                    Address: {{ patient.address }}
-                </div>
-                <div>
-                    Phone: {{ patient.phone }}
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
-</body>
-
-</html>
+<title>Patients</title>
+<div>
+    <ul>
+        {% for patient in patients %}
+        <li>
+            <div>
+                Id: {{ patient.id }}
+            </div>
+            <div>
+                Name: {{ patient.name }}
+            </div>
+            <div>
+                Address: {{ patient.address }}
+            </div>
+            <div>
+                Phone: {{ patient.phone }}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div>
+    <button>
+        <a hx-target="#body" hx-push-url="true" hx-get="/patients/new">New Patient</a>
+    </button>
+</div>

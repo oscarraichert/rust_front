@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
 
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
 </head>
 
-<body>
+<body id="body">
+    <title>Home</title>
     <div>
         <nav>
-            <a href="/patients">Patients</a>
-            <a href="/physicians">Physicians</a>
-            <a href="/appointments">Appointments</a>
+            <a hx-push-url="true" hx-target="#body" hx-get="/patients">Patients</a>
+            <a hx-push-url="true" hx-target="#body" hx-get="/physicians">Physicians</a>
+            <a hx-push-url="true" hx-target="#body" hx-get="/appointments">Appointments</a>
         </nav>
     </div>
 </body>
