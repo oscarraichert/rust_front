@@ -1,5 +1,5 @@
-use crate::models::patient::Patient;
-use anyhow::Result;
+use crate::models::{new_patient::NewPatient, patient::Patient};
+use anyhow::{Ok, Result};
 use reqwest::Client;
 
 #[derive(Clone)]
@@ -26,5 +26,18 @@ impl PatientsService {
         let patients = response.json().await?;
 
         Ok(patients)
+    }
+
+    pub async fn create_patient(&self, new_patient: NewPatient) -> Result<Patient> {
+        let response = self
+            .http_client
+            .post(format!("{}/patients", self.api_host))
+            .json(&new_patient)
+            .send()
+            .await?;
+
+        let patient = response.json().await?;
+
+        Ok(patient)
     }
 }
