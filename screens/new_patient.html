@@ -9,10 +9,10 @@
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
 </head>
 
-<body>
+<body id="body">
     <div>
 
-        <form hx-post="/new_patient">
+        <form hx-post="/new_patient" hx-target="#body" hx-push-url="/patients">
             <div>
                 <label for="name">Name:</label>
                 <input type="text" name="name">
