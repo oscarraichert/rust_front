@@ -11,8 +11,9 @@
 
 <body id="body">
     <div>
+        <button onclick="history.back()">Go Back</button>
 
-        <form hx-post="/new_patient" hx-target="#body" hx-push-url="/patients">
+        <form hx-post="/new_patient" hx-target="#body">
             <div>
                 <label for="name">Name:</label>
                 <input type="text" name="name">
@@ -25,7 +26,7 @@
                 <label for="phone">Phone:</label>
                 <input type="tel" name="phone">
             </div>
-            <button action="submit">Submit</button>
+            <button action="submit" onclick="history.back()">Submit</button>
         </form>
     </div>
 </body>

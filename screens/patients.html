@@ -7,27 +7,35 @@
     <title>Patients</title>
 
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.14"></script>
 </head>
 
 <body id="body">
+    <button onclick="history.back()">Go Back</button>
 
     <div>
         <ul>
             {% for patient in patients %}
-            <li>
+            <div>
+                <li>
+                    <div>
+                        Id: {{ patient.id }}
+                    </div>
+                    <div>
+                        Name: {{ patient.name }}
+                    </div>
+                    <div>
+                        Address: {{ patient.address }}
+                    </div>
+                    <div>
+                        Phone: {{ patient.phone }}
+                    </div>
+                </li>
                 <div>
-                    Id: {{ patient.id }}
+                    <button class="btn primary" hx-get="/delete_patient_modal/{{patient.id}}" hx-pa hx-target="body"
+                        hx-swap="beforeend">Delete</button>
                 </div>
-                <div>
-                    Name: {{ patient.name }}
-                </div>
-                <div>
-                    Address: {{ patient.address }}
-                </div>
-                <div>
-                    Phone: {{ patient.phone }}
-                </div>
-            </li>
+            </div>
             {% endfor %}
         </ul>
     </div>

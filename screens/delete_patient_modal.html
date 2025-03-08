@@ -1,0 +1,13 @@
+<script src="https://unpkg.com/hyperscript.org@0.9.14"></script>
+<link rel="stylesheet" href="/styles/delete_patient_modal.css">
+<div id="modal" _="on closeModal add .closing then wait for animationend then remove me">
+    <div class="modal-underlay" _="on click trigger closeModal"></div>
+    <div class="modal-content">
+        <h1>Alert</h1>
+        Are you sure you want to delete
+        <br>
+        <br>
+        <button class="btn danger" _="on click trigger closeModal">Close</button>
+        <button class="btn danger" _="on click trigger closeModal">Close</button>
+    </div>
+</div>
