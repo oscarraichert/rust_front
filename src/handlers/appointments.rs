@@ -1,9 +1,10 @@
 use askama::Template;
+use askama_web::WebTemplate;
 use axum::extract::State;
 
 use crate::{core::app_state::AppState, models::appointment::Appointment};
 
-#[derive(Template)]
+#[derive(Template, WebTemplate)]
 #[template(path = "appointments.html")]
 pub struct AppointmentsScreen {
     appointments: Vec<Appointment>,

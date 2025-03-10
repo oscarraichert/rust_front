@@ -1,9 +1,10 @@
 use askama::Template;
+use askama_web::WebTemplate;
 use axum::extract::State;
 
 use crate::{core::app_state::AppState, models::physician::Physician};
 
-#[derive(Template)]
+#[derive(Template, WebTemplate)]
 #[template(path = "physicians.html")]
 pub struct PhysiciansScreen {
     pub physicians: Vec<Physician>,

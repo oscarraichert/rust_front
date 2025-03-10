@@ -5,9 +5,9 @@ edition = "2024"
 
 [dependencies]
 anyhow = "1.0.97"
-askama = {version = "0.12.1", features = ["with-axum"]}
-askama_axum = "0.4.0"
-axum = {version = "0.7.9", features = ["macros"]}
+askama = {version = "0.12.1"}
+askama_web = {version = "0.0.1-pre.0", features = ["axum-0.8"]}
+axum = {version = "0.8.1", features = ["macros"]}
 dotenvy = {version = "0.15.7"}
 reqwest = {version = "0.12.12", features = ["json"] }
 serde = {version = "1.0.218", features = ["derive"]}

@@ -1,9 +1,10 @@
 use askama::Template;
+use askama_web::WebTemplate;
 use axum::extract::{Path, State};
 
 use crate::{core::app_state::AppState, models::patient::Patient};
 
-#[derive(Template)]
+#[derive(Template, WebTemplate)]
 #[template(path = "patients.html")]
 pub struct PatientsScreen {
     pub patients: Vec<Patient>,
@@ -15,7 +16,7 @@ pub async fn patients_screen_handler(State(state): State<AppState>) -> PatientsS
     PatientsScreen { patients: patients }
 }
 
-#[derive(Template)]
+#[derive(Template, WebTemplate)]
 #[template(path = "delete_patient_modal.html")]
 pub struct DeletePatientModal {
     pub id: u32,

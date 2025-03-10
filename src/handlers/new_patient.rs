@@ -1,4 +1,5 @@
 use askama::Template;
+use askama_web::WebTemplate;
 use axum::{Form, extract::State};
 
 use crate::{
@@ -8,7 +9,7 @@ use crate::{
 
 use super::patients::PatientsScreen;
 
-#[derive(Template)]
+#[derive(Template, WebTemplate)]
 #[template(path = "new_patient.html")]
 pub struct NewPatientScreen;
 

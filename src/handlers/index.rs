@@ -1,5 +1,4 @@
-use askama_axum::{IntoResponse, Response};
-use axum::response::Redirect;
+use axum::response::{IntoResponse, Redirect, Response};
 
 pub async fn index_handler() -> Response {
     let auth = true;
