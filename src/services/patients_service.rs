@@ -1,6 +1,6 @@
 use crate::models::{new_patient::NewPatient, patient::Patient};
 use anyhow::{Ok, Result};
-use reqwest::Client;
+use reqwest::{Client, StatusCode};
 
 #[derive(Clone)]
 pub struct PatientsService {
@@ -28,6 +28,18 @@ impl PatientsService {
         Ok(patients)
     }
 
+    pub async fn get_patient(&self, id: u32) -> Result<Patient> {
+        let response = self
+            .http_client
+            .get(format!("{}/patients/{id}", self.api_host))
+            .send()
+            .await?;
+
+        let patient = response.json().await?;
+
+        Ok(patient)
+    }
+
     pub async fn create_patient(&self, new_patient: NewPatient) -> Result<Patient> {
         let response = self
             .http_client
@@ -39,5 +51,17 @@ impl PatientsService {
         let patient = response.json().await?;
 
         Ok(patient)
+    }
+
+    pub async fn delete_patient(&self, id: u32) -> Result<StatusCode> {
+        let response = self
+            .http_client
+            .delete(format!("{}/patients/{id}", self.api_host))
+            .send()
+            .await?;
+
+        let status = response.status();
+
+        Ok(status)
     }
 }

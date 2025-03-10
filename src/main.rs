@@ -14,7 +14,7 @@ use handlers::{
     home::home_screen_handler,
     index::index_handler,
     new_patient::{new_patient_form_handler, new_patient_screen_handler},
-    patients::{delete_patient_modal_handler, patients_screen_handler},
+    patients::{delete_patient, delete_patient_modal_handler, patients_screen_handler},
     physicians::physicians_screen_handler,
 };
 use tower_http::services::{ServeDir, ServeFile};
@@ -35,6 +35,7 @@ async fn main() {
             "/delete_patient_modal/{id}",
             get(delete_patient_modal_handler),
         )
+        .route("/delete_patient/{id}", get(delete_patient))
         .nest_service(
             "/styles",
             ServeDir::new("styles").not_found_service(ServeFile::new("/")),
