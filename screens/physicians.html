@@ -1,3 +1,5 @@
+</html>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,26 +9,41 @@
     <title>Physicians</title>
 
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <script src="https://unpkg.com/hyperscript.org@0.9.14"></script>
 </head>
 
-<body>
+<body id="body">
+    <button onclick="history.back()">Go Back</button>
+
     <div>
         <ul>
             {% for physician in physicians %}
-            <li>
+            <div>
+                <li>
+                    <div>
+                        Id: {{ physician.id }}
+                    </div>
+                    <div>
+                        Name: {{ physician.name }}
+                    </div>
+                    <div>
+                        Specialization: {{ physician.specialization }}
+                    </div>
+                </li>
                 <div>
-                    Id: {{ physician.id }}
+                    <button class="btn primary" hx-get="/delete_physician_modal/{{physician.id}}" hx-pa hx-target="body"
+                        hx-swap="beforeend">Delete</button>
                 </div>
-                <div>
-                    Name: {{ physician.name }}
-                </div>
-                <div>
-                    Specialization: {{ physician.specialization }}
-                </div>
-            </li>
+            </div>
             {% endfor %}
         </ul>
     </div>
+    <div>
+        <button>
+            <a hx-target="#body" hx-push-url="true" hx-get="/physicians/new">New Physician</a>
+        </button>
+    </div>
+
 </body>
 
 </html>

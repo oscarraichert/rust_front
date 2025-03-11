@@ -1,0 +1,16 @@
+<div id="content">
+    <script src="https://unpkg.com/hyperscript.org@0.9.14"></script>
+    <link rel="stylesheet" href="/styles/delete_patient_modal.css">
+    <div id="modal" _="on closeModal add .closing then wait for animationend then remove me">
+        <div class="modal-underlay" _="on click trigger closeModal"></div>
+        <div class="modal-content">
+            <h1>Delete</h1>
+            Are you sure you want to delete {{ physician.name }}?
+            <br>
+            <br>
+            <button class="btn danger" hx-get="/delete_physician/{{physician.id}}" hx-target="#body"
+                _="on click trigger closeModal">Confirm</button>
+            <button class="btn danger" _="on click trigger closeModal">Close</button>
+        </div>
+    </div>
+</div>

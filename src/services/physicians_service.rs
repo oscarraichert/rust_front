@@ -1,6 +1,6 @@
 use crate::models::physician::Physician;
 use anyhow::Result;
-use reqwest::Client;
+use reqwest::{Client, StatusCode};
 
 #[derive(Clone)]
 pub struct PhysiciansService {
@@ -26,5 +26,29 @@ impl PhysiciansService {
         let physicians = response.json().await?;
 
         Ok(physicians)
+    }
+
+    pub async fn get_physician(&self, id: u32) -> Result<Physician> {
+        let response = self
+            .http_client
+            .get(format!("{}/physicians/{id}", self.api_host))
+            .send()
+            .await?;
+
+        let physician = response.json().await?;
+
+        Ok(physician)
+    }
+
+    pub async fn delete_physician(&self, id: u32) -> Result<StatusCode> {
+        let response = self
+            .http_client
+            .delete(format!("{}/physicians/{id}", self.api_host))
+            .send()
+            .await?;
+
+        let status = response.status();
+
+        Ok(status)
     }
 }
