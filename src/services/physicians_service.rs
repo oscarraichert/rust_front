@@ -1,5 +1,5 @@
-use crate::models::physician::Physician;
-use anyhow::Result;
+use crate::models::{new_physician::NewPhysician, physician::Physician};
+use anyhow::{Ok, Result};
 use reqwest::{Client, StatusCode};
 
 #[derive(Clone)]
@@ -32,6 +32,19 @@ impl PhysiciansService {
         let response = self
             .http_client
             .get(format!("{}/physicians/{id}", self.api_host))
+            .send()
+            .await?;
+
+        let physician = response.json().await?;
+
+        Ok(physician)
+    }
+
+    pub async fn create_physician(&self, new_physician: NewPhysician) -> Result<Physician> {
+        let response = self
+            .http_client
+            .post(format!("{}/physicians", self.api_host))
+            .json(&new_physician)
             .send()
             .await?;
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Physician</title>
+
+    <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+</head>
+
+<body id="body">
+    <div>
+        <button onclick="history.back()">Go Back</button>
+
+        <form hx-post="/new_physician" hx-target="#body">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name">
+            </div>
+            <div>
+                <label for="specialization">Specialization:</label>
+                <select name="specialization" id="select"></select>
+            </div>
+            <button action="submit" onclick="history.back()">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

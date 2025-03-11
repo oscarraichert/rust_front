@@ -14,6 +14,7 @@ use handlers::{
     home::home_screen_handler,
     index::index_handler,
     new_patient::{new_patient_form_handler, new_patient_screen_handler},
+    new_physician::{new_physician_form_handler, new_physician_screen_handler},
     patients::{delete_patient, delete_patient_modal_handler, patients_screen_handler},
     physicians::{delete_physician, delete_physician_modal_handler, physicians_screen_handler},
 };
@@ -30,7 +31,9 @@ async fn main() {
         .route("/physicians", get(physicians_screen_handler))
         .route("/appointments", get(appointments_screen_handler))
         .route("/patients/new", get(new_patient_screen_handler))
+        .route("/physicians/new", get(new_physician_screen_handler))
         .route("/new_patient", post(new_patient_form_handler))
+        .route("/new_physician", post(new_physician_form_handler))
         .route(
             "/delete_patient_modal/{id}",
             get(delete_patient_modal_handler),
