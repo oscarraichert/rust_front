@@ -1,20 +1,27 @@
 use askama::Template;
 use askama_web::WebTemplate;
 use axum::{Form, extract::State};
+use strum::IntoEnumIterator;
 
-use crate::{core::app_state::AppState, models::new_physician::NewPhysician};
+use crate::{
+    core::app_state::AppState,
+    models::{new_physician::NewPhysician, physician::Specialization},
+};
 
 use super::physicians::PhysiciansScreen;
 
 #[derive(Template, WebTemplate)]
 #[template(path = "new_physician.html")]
-pub struct NewPhysicianScreen;
-
-pub async fn new_physician_screen_handler() -> NewPhysicianScreen {
-    NewPhysicianScreen
+pub struct NewPhysicianScreen {
+    specializations: Vec<Specialization>,
 }
 
-#[axum::debug_handler]
+pub async fn new_physician_screen_handler() -> NewPhysicianScreen {
+    NewPhysicianScreen {
+        specializations: Specialization::iter().collect(),
+    }
+}
+
 pub async fn new_physician_form_handler(
     State(state): State<AppState>,
     Form(form): Form<NewPhysician>,

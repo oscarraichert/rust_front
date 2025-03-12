@@ -1,6 +1,5 @@
-use std::fmt::Display;
-
 use serde::Deserialize;
+use strum::{Display, EnumIter};
 
 #[derive(Debug, Deserialize)]
 pub struct Physician {
@@ -9,7 +8,7 @@ pub struct Physician {
     pub specialization: Specialization,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Display, EnumIter)]
 pub enum Specialization {
     Cardiologist,
     Neurologist,
@@ -18,20 +17,4 @@ pub enum Specialization {
     Gynecologist,
     Otolaryngologist,
     Pediatrist,
-}
-
-impl Display for Specialization {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        let specialization = match self {
-            Specialization::Cardiologist => "Cardiologist",
-            Specialization::Neurologist => "Neurologist",
-            Specialization::Psychiatrist => "Psychiatrist",
-            Specialization::Dermatologist => "Dermatologist",
-            Specialization::Gynecologist => "Gynecologist",
-            Specialization::Otolaryngologist => "Otolaryngologist",
-            Specialization::Pediatrist => "Pediatrist",
-        };
-
-        write!(f, "{}", specialization)
-    }
 }

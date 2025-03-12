@@ -20,7 +20,11 @@
             </div>
             <div>
                 <label for="specialization">Specialization:</label>
-                <select name="specialization" id="select"></select>
+                <select name="specialization" id="select">
+                    {% for specialization in specializations %}
+                    <option value="{{specialization}}">{{specialization}}</option>
+                    {% endfor %}
+                </select>
             </div>
             <button action="submit" onclick="history.back()">Submit</button>
         </form>
