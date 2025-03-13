@@ -21,6 +21,7 @@
             <div>
                 <label for="specialization">Specialization:</label>
                 <select name="specialization" id="select">
+                    <option value="" disabled selected>Select</option>
                     {% for specialization in specializations %}
                     <option value="{{specialization}}">{{specialization}}</option>
                     {% endfor %}
